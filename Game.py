@@ -28,6 +28,10 @@ class Game():
                 elif event.type==pygame.KEYDOWN:
                     if event.key==pygame.K_DOWN:
                         self.active_brick.accelerate()
+                    elif event.key==pygame.K_RIGHT:
+                        self.active_brick.move_right()
+                    elif event.key==pygame.K_LEFT:
+                        self.active_brick.move_left()
                 elif event.type==pygame.KEYUP:
                     if event.key==pygame.K_DOWN:
                         self.active_brick.stop_accelerate()
