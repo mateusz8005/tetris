@@ -6,6 +6,7 @@ class Brick():
     def __init__(self,board):
         self.board=board
         self.block_size=board.block_size
+        self.accelerated=False
         rand=randint(0,3)
         if rand==0:
             # square
@@ -40,10 +41,19 @@ class Brick():
         pygame.display.flip()
 
     def move_down(self):
-        self.y+=self.speed
+        if self.accelerated:
+            self.y+=10*self.speed
+        else:
+            self.y+=self.speed
 
     def move_left(self):
         self.x-=self.speed
 
     def move_right(self):
         self.x+=self.speed
+
+    def accelerate(self):
+        self.accelerated=True
+
+    def stop_accelerate(self):
+        self.accelerated=False

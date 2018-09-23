@@ -25,6 +25,12 @@ class Game():
                 if event.type==pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                elif event.type==pygame.KEYDOWN:
+                    if event.key==pygame.K_DOWN:
+                        self.active_brick.accelerate()
+                elif event.type==pygame.KEYUP:
+                    if event.key==pygame.K_DOWN:
+                        self.active_brick.stop_accelerate()
             self.clear_screen()
             self.board.draw()
             if self.board.move_brick_down(self.active_brick):
