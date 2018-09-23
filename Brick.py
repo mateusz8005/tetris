@@ -6,12 +6,30 @@ class Brick():
     def __init__(self,board):
         self.board=board
         self.block_size=board.block_size
-        rand=randint(0,1)
+        rand=randint(0,3)
         if rand==0:
             # square
             self.point=[(0,0),(0,1),(1,0),(1,1)]
         elif rand==1:
+            # stick
             self.point=[(0,0),(1,0),(2,0),(3,0)]
+        elif rand==2:
+            # t
+            self.point=[(1,0),(0,1),(1,1),(2,1)]
+        elif rand==3:
+            # left l
+            self.point=[(1,0),(1,1),(0,2),(1,2)]
+        elif rand==4:
+            # right l
+            self.point=[(0,0),(0,1),(0,2),(1,2)]
+        elif rand==5:
+            # left dog
+            self.point=[(0,0),(1,0),(1,1),(1,2)]
+        elif rand==6:
+            # right dog
+            self.point=[(1,0),(2,0),(1,1),(0,1)]
+
+
         self.x=0
         self.y=0
         self.speed=1
