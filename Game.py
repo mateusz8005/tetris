@@ -32,6 +32,7 @@ class Game():
                 self.active_brick.move_down()
             else:
                 self.still_brick.append(self.active_brick)
+                self.active_brick=Brick(self.board)
 
             for brick in self.still_brick:
                 brick.draw()

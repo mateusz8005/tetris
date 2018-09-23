@@ -16,9 +16,10 @@ class Board():
 
     def draw(self):
         pygame.draw.rect(pygame.display.get_surface(),self.bg_color,pygame.Rect(self.x,self.y,self.pixel_width,self.pixel_height))
-        pygame.display.flip()
+
     def move_brick_down(self,brick):
-        if (brick.y/self.block_size)+1 < self.height:
-            self.tab[brick.x][(brick.y/self.block_size)+1]=1
+        if (brick.y/self.block_size)+1 < self.height and self.tab[brick.x][int(brick.y/self.block_size)+1]==0 :
             return True
-        return False
+        else:
+            self.tab[brick.x][int(brick.y/self.block_size)]=1
+            return False
