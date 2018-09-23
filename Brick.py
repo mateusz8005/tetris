@@ -15,7 +15,8 @@ class Brick():
         self.speed=1
 
     def draw(self):
-        pygame.draw.rect(pygame.display.get_surface(),(255,255,200),pygame.Rect(self.x+self.board.x,self.y+self.board.y,self.block_size,self.block_size))
+        for point in self.point:
+            pygame.draw.rect(pygame.display.get_surface(),(255,255,200),pygame.Rect(self.x+self.board.x+point[0]*self.block_size,self.y+self.board.y+point[1]*self.block_size,self.block_size,self.block_size))
         pygame.display.flip()
 
     def move_down(self):
