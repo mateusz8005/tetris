@@ -32,6 +32,8 @@ class Game():
                         self.active_brick.move_right()
                     elif event.key==pygame.K_LEFT:
                         self.active_brick.move_left()
+                    elif event.key==pygame.K_SPACE:
+                        self.active_brick.rotate()
                 elif event.type==pygame.KEYUP:
                     if event.key==pygame.K_DOWN:
                         self.active_brick.stop_accelerate()
