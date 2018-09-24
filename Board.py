@@ -41,6 +41,7 @@ class Board():
             for i in range(len(brick.point)):
                 self.tab[((brick.y/self.block_size)+brick.point[i][1])*self.width+brick.x+brick.point[i][0]]=1
             return False
+
     def check_row(self):
         empty_cell=False
         for y in range(self.height):
@@ -50,8 +51,7 @@ class Board():
                     empty_cell=True
                     break
             if empty_cell==False:
-                for x in range(y*self.width,y*self.width+self.width):
+                for x in range(self.width*self.height):
                     self.tab[x]=0
-                print self.tab
                 return y
         return False

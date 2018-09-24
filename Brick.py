@@ -7,6 +7,7 @@ class Brick():
         self.board=board
         self.block_size=board.block_size
         self.accelerated=False
+        self.color=(randint(50,255),randint(50,255),randint(50,255))
         rand=randint(0,6)
         if rand==0:
             # square
@@ -37,7 +38,7 @@ class Brick():
 
     def draw(self):
         for point in self.point:
-            pygame.draw.rect(pygame.display.get_surface(),(255,255,200),pygame.Rect(self.x*self.block_size+self.board.x+point[0]*self.block_size,self.y+self.board.y+point[1]*self.block_size,self.block_size,self.block_size))
+            pygame.draw.rect(pygame.display.get_surface(),self.color,pygame.Rect(self.x*self.block_size+self.board.x+point[0]*self.block_size,self.y+self.board.y+point[1]*self.block_size,self.block_size,self.block_size))
         pygame.display.flip()
 
     def move_down(self):
