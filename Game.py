@@ -48,6 +48,14 @@ class Game():
 
             for brick in self.still_brick:
                 brick.draw()
+                if self.board.move_brick_down(brick):
+                    brick.move_down()
+                    brick.draw()
+
+            check_row=self.board.check_row()
+            if check_row!=False:
+                for brick in self.still_brick:
+                    brick.remove_element(check_row)
 
 
             fps_clock.tick(30)

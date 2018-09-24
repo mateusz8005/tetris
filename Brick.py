@@ -87,3 +87,9 @@ class Brick():
             for i in range(len(self.point)):
                 self.point[i][0]=position_x[i]
                 self.point[i][1]=position_y[i]
+
+    def remove_element(self,y):
+        for i in range(len(self.point)):
+            if self.y/self.block_size+self.point[i][1]==y:
+                self.point.remove(self.point[i])
+                return self.remove_element(y)

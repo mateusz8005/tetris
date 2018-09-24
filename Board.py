@@ -14,6 +14,9 @@ class Board():
         self.pixel_height=self.height*self.block_size
         self.x=(pygame.display.get_surface().get_size()[0]-self.pixel_width)/2
         self.y=(pygame.display.get_surface().get_size()[1]-self.pixel_height)/2
+        self.empty_row=[]
+        for i in range (self.width):
+            self.empty_row.append(0)
 
 
     def draw(self):
@@ -37,7 +40,18 @@ class Board():
         else:
             for i in range(len(brick.point)):
                 self.tab[((brick.y/self.block_size)+brick.point[i][1])*self.width+brick.x+brick.point[i][0]]=1
-                print self.tab
-            os.system("pause")
-
             return False
+    def check_row(self):
+        empty_cell=False
+        for y in range(self.height):
+            empty_cell=False
+            for x in range(self.width):
+                if self.tab[y*self.width+x]==0:
+                    empty_cell=True
+                    break
+            if empty_cell==False:
+                for x in range(y*self.width,y*self.width+self.width):
+                    self.tab[x]=0
+                print self.tab
+                return y
+        return False
