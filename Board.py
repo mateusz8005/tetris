@@ -42,6 +42,30 @@ class Board():
                 self.tab[((brick.y/self.block_size)+brick.point[i][1])*self.width+brick.x+brick.point[i][0]]=1
             return False
 
+    def can_brick_move_right(self,brick):
+        flag=False
+        for i in range(len(brick.point)):
+            if brick.x+1+brick.point[i][0]<self.width  and self.tab[brick.y*self.width+brick.x+1+brick.point[i]] ==0 :
+                flag=True
+            else:
+                flag=False
+                break
+        if flag:
+            return True
+        return False
+
+    def can_brick_move_left(self,brick):
+        flag=False
+        for i in range(len(brick.point)):
+            if brick.x-1+brick.point[i][0]>=0  and self.tab[brick.y*self.width+brick.x-1+brick.point[i]] ==0:
+                flag=True
+            else:
+                flag=False
+                break
+        if flag:
+            return True
+        return False
+
     def check_row(self):
         empty_cell=False
         for y in range(self.height):

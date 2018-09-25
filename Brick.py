@@ -94,3 +94,6 @@ class Brick():
             if self.y/self.block_size+self.point[i][1]==y:
                 self.point.remove(self.point[i])
                 return self.remove_element(y)
+
+    def align(self):
+        self.y=int(self.y/self.block_size)*self.block_size

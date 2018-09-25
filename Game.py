@@ -29,9 +29,11 @@ class Game():
                     if event.key==pygame.K_DOWN:
                         self.active_brick.accelerate()
                     elif event.key==pygame.K_RIGHT:
-                        self.active_brick.move_right()
+                        if self.board.can_brick_move_right:
+                            self.active_brick.move_right()
                     elif event.key==pygame.K_LEFT:
-                        self.active_brick.move_left()
+                        if self.board.can_brick_move_left:
+                            self.active_brick.move_left()
                     elif event.key==pygame.K_SPACE:
                         self.active_brick.rotate()
                     elif event.key==pygame.K_ESCAPE:
@@ -63,6 +65,7 @@ class Game():
                 self.active_brick.move_down()
             else:
                 self.still_brick.append(self.active_brick)
+                self.active_brick.align()
                 self.active_brick=Brick(self.board)
 
             fps_clock.tick(30)
